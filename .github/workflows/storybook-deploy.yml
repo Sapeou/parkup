@@ -30,7 +30,8 @@ jobs:
         run: npx storybook build --output-dir storybook-static
 
       - name: Upload artifact for GitHub Pages
-        uses: actions/upload-pages-artifact@v1
+        # use newer version to avoid deprecated dependency on actions/upload-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
           path: storybook-static
 
