@@ -1,0 +1,16 @@
+node_modules/
+.parcel-cache/
+.cache/
+dist/
+storybook-static/
+storybook-static/*
+node_modules_backup_*/
+.storybook-backup/
+.archive_storybook_backup_*
+package-lock.json
+*.log
+/.vscode/
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
