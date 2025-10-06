@@ -7,10 +7,12 @@ export default function SpotCard({title,price,img,onReserve,onOpen}){
       <div className="spot-thumb" onClick={onOpen} style={{cursor:'pointer'}}>
         <img src={img} alt={title} style={{width:'100%',height:140,objectFit:'cover',borderRadius:8}} />
       </div>
-      <div style={{marginTop:8,fontWeight:700,cursor:'pointer'}} onClick={onOpen} role="button" tabIndex={0} onKeyDown={(e)=>{ if(e.key === 'Enter') onOpen() }}>{title}</div>
+      <div style={{marginTop:8,fontWeight:700}}>
+        <div className="spot-title" onClick={onOpen} role="button" tabIndex={0} onKeyDown={(e)=>{ if(e.key === 'Enter') onOpen() }} style={{cursor:'pointer'}}>{title}</div>
+      </div>
       <div className="meta">
         <div className="muted">R$ {price} / hr</div>
-        <motion.button whileTap={{scale:0.96}} className="button-primary" style={{height:36,padding:'0 12px',borderRadius:10}} onClick={()=>onReserve({title,price,img})}>Reservar</motion.button>
+        <motion.button whileTap={{scale:0.96}} className="btn" style={{height:36,padding:'0 12px',borderRadius:10}} onClick={()=>onReserve({title,price,img})}>Reservar</motion.button>
       </div>
     </div>
   )

@@ -13,7 +13,7 @@ export default function Header({ brand = 'Parkup', onLogin = () => {} }) {
       <nav className="nav-links" style={{display:'flex',gap:12,alignItems:'center'}}>
         <Link to="/" style={{textDecoration:'none'}}>Como Funciona</Link>
         <a style={{cursor:'pointer'}}>Seja Parceiro</a>
-        <button className="button-primary" onClick={onLogin}>Entrar</button>
+        <button className="btn" onClick={onLogin}>Entrar</button>
       </nav>
     </header>
   )

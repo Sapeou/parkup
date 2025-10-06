@@ -32,8 +32,8 @@ export default function ReservationModal({spot,onClose}){
               </div>
             </div>
             <div style={{marginTop:12,display:'flex',gap:8,justifyContent:'flex-end'}}>
-              <button onClick={onClose} style={{padding:'8px 12px',borderRadius:8}}>Cancelar</button>
-              <motion.button whileTap={{scale:0.96}} className="button-primary" style={{padding:'8px 12px',borderRadius:8}} onClick={handleConfirm}>Confirmar reserva</motion.button>
+              <button className="btn secondary" onClick={onClose} style={{padding:'8px 12px',borderRadius:8}}>Cancelar</button>
+              <motion.button whileTap={{scale:0.96}} className="btn" style={{padding:'8px 12px',borderRadius:8}} onClick={handleConfirm}>Confirmar reserva</motion.button>
             </div>
           </div>
         ) : (
