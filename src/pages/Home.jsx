@@ -1,6 +1,4 @@
 import React from 'react'
-import SpotCard from '../components/SpotCard'
-import MapPreview from '../components/MapPreview'
 
 export default function Home({onReserve, openMap, openSpot}){
   return (
@@ -43,26 +41,16 @@ export default function Home({onReserve, openMap, openSpot}){
                 <div className="relative w-[300px] h-[600px] lg:w-[350px] lg:h-[700px]">
                   <div className="absolute inset-0 bg-neutral-dark rounded-[40px] shadow-2xl transform rotate-3"></div>
                   <div className="absolute inset-0 bg-neutral-dark/80 rounded-[40px] shadow-2xl transform -rotate-3"></div>
-                  <div className="relative w-full h-full bg-background-dark rounded-[40px] border-4 border-neutral-dark p-4 flex flex-col">
-                    <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-b-lg"></div>
-                    <div className="flex-1 bg-center bg-no-repeat bg-cover rounded-3xl" data-alt="map with parking pins displayed on a mobile phone screen" data-location="generic city" style={{backgroundImage: 'url("https://placeholder.pics/svg/300")'}}>
-                      <div style={{height:'100%'}}>
-                        <MapPreview height={'100%'} />
+                      <div className="relative w-full h-full bg-background-dark rounded-[40px] border-4 border-neutral-dark p-4 flex flex-col">
+                        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-b-lg"></div>
+                        <div className="flex-1 bg-center bg-no-repeat bg-cover rounded-3xl" data-alt="map with parking pins displayed on a mobile phone screen" data-location="generic city" style={{backgroundImage: 'url("https://placeholder.pics/svg/300")'}}>
+                        </div>
                       </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
 
-            <section className="mt-8">
-              <h2 className="text-2xl font-subheading font-bold">Vagas próximas</h2>
-              <div className="card-grid mt-3" style={{marginTop:12}}>
-                <SpotCard title="Vaga Coberta - Centro" price="6.5" img="https://picsum.photos/seed/rs1/600/400" onReserve={onReserve} onOpen={()=>openSpot('Vaga Coberta - Centro')} />
-                <SpotCard title="Vaga Descoberta - Bairro Alto" price="4" img="https://picsum.photos/seed/rs2/600/400" onReserve={onReserve} onOpen={()=>openSpot('Vaga Descoberta - Bairro Alto')} />
-                <SpotCard title="Vaga Privada - Estúdio" price="8" img="https://picsum.photos/seed/rs3/600/400" onReserve={onReserve} onOpen={()=>openSpot('Vaga Privada - Estúdio')} />
-              </div>
-            </section>
+            {/* landing only - removed interactive preview and listings as requested */}
           </div>
         </main>
       </div>
