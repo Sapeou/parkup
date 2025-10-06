@@ -1,8 +1,16 @@
 import React from 'react'
 import MapView from './MapView'
+import { AppProvider } from '../state/AppContext'
 
-const meta = { title: 'Pages/MapView', component: MapView }
-export default meta
+export default {
+  title: 'Pages/MapView',
+  component: MapView,
+}
 
-export const Default = (args) => <MapView {...args} />
-Default.args = { onBack: () => alert('Fechar mapa (story)') }
+export const Default = () => (
+  <AppProvider>
+    <div style={{width:800,height:500}}>
+      <MapView onBack={() => {}} />
+    </div>
+  </AppProvider>
+)
