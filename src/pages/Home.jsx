@@ -1,30 +1,71 @@
 import React from 'react'
 import SpotCard from '../components/SpotCard'
+import MapPreview from '../components/MapPreview'
 
 export default function Home({onReserve, openMap, openSpot}){
   return (
-    <div>
-      <section className="hero">
-        <div style={{flex:1}}>
-          <h1 className="brand-title">Encontre sua vaga rápida</h1>
-          <p className="muted">Filtre por proximidade, cobertura e preço.</p>
-          <div style={{marginTop:16}}>
-            <button className="button-primary" onClick={openMap}>Abrir mapa</button>
+    <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+      <div className="layout-container flex h-full grow flex-col">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+          <div className="container mx-auto px-6 lg:px-8">
+            <div className="flex items-center justify-between h-20 border-b border-neutral-light dark:border-neutral-dark/40">
+              <div className="flex items-center gap-3">
+                <svg className="text-secondary" height="32" viewBox="0 0 48 48" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+                <h2 className="text-secondary text-2xl font-heading font-bold">Parkup</h2>
+              </div>
+              <nav className="hidden lg:flex items-center gap-8">
+                <a className="text-text-light dark:text-text-dark hover:text-secondary dark:hover:text-primary text-base font-medium" href="#">Como Funciona</a>
+                <a className="text-text-light dark:text-text-dark hover:text-secondary dark:hover:text-primary text-base font-medium" href="#">Seja Parceiro</a>
+                <a className="text-text-light dark:text-text-dark hover:text-secondary dark:hover:text-primary text-base font-medium" href="#">Baixar App</a>
+                <button onClick={openMap} className="flex min-w-[90px] cursor-pointer items-center justify-center rounded-lg h-10 px-5 border-2 border-secondary text-secondary hover:bg-secondary hover:text-white dark:hover:text-background-dark text-base font-bold transition-all duration-300">
+                  <span className="truncate">Entrar</span>
+                </button>
+              </nav>
+              <div className="lg:hidden">
+                <button className="material-symbols-outlined text-3xl">menu</button>
+              </div>
+            </div>
           </div>
-        </div>
-        <div style={{width:'48%',minWidth:300}}>
-          <div className="map-placeholder card">Mapa interativo (preview)</div>
-        </div>
-      </section>
+        </header>
 
-      <section style={{marginTop:32}}>
-        <h2>Vagas próximas</h2>
-        <div className="card-grid" style={{marginTop:12}}>
-          <SpotCard title="Vaga Coberta - Centro" price="6.5" img="https://picsum.photos/seed/rs1/600/400" onReserve={onReserve} onOpen={()=>openSpot('Vaga Coberta - Centro')} />
-          <SpotCard title="Vaga Descoberta - Bairro Alto" price="4" img="https://picsum.photos/seed/rs2/600/400" onReserve={onReserve} onOpen={()=>openSpot('Vaga Descoberta - Bairro Alto')} />
-          <SpotCard title="Vaga Privada - Estúdio" price="8" img="https://picsum.photos/seed/rs3/600/400" onReserve={onReserve} onOpen={()=>openSpot('Vaga Privada - Estúdio')} />
-        </div>
-      </section>
+        <main className="flex-1">
+          <div className="container mx-auto px-6 lg:px-8 pt-20">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-12 py-20 lg:py-32">
+              <div className="lg:w-1/2 text-center lg:text-left">
+                <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-text-light dark:text-text-dark tracking-tight leading-tight">Estacione fácil. <br className="hidden lg:block"/>Compartilhe melhor.</h1>
+                <p className="mt-6 text-lg text-text-light/80 dark:text-text-dark/80 max-w-lg mx-auto lg:mx-0">Encontre e reserve vagas de estacionamento em segundos com Parkup. Simplifique sua vida e economize tempo.</p>
+                <div className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                  <button onClick={openMap} className="w-full sm:w-auto flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-8 bg-primary text-white text-lg font-bold shadow-soft hover:scale-105 transition-transform duration-300">Encontrar vaga agora</button>
+                </div>
+              </div>
+
+              <div className="lg:w-1/2 flex justify-center lg:justify-end">
+                <div className="relative w-[300px] h-[600px] lg:w-[350px] lg:h-[700px]">
+                  <div className="absolute inset-0 bg-neutral-dark rounded-[40px] shadow-2xl transform rotate-3"></div>
+                  <div className="absolute inset-0 bg-neutral-dark/80 rounded-[40px] shadow-2xl transform -rotate-3"></div>
+                  <div className="relative w-full h-full bg-background-dark rounded-[40px] border-4 border-neutral-dark p-4 flex flex-col">
+                    <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-b-lg"></div>
+                    <div className="flex-1 bg-center bg-no-repeat bg-cover rounded-3xl" data-alt="map with parking pins displayed on a mobile phone screen" data-location="generic city" style={{backgroundImage: 'url("https://placeholder.pics/svg/300")'}}>
+                      <div style={{height:'100%'}}>
+                        <MapPreview height={'100%'} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <section className="mt-8">
+              <h2 className="text-2xl font-subheading font-bold">Vagas próximas</h2>
+              <div className="card-grid mt-3" style={{marginTop:12}}>
+                <SpotCard title="Vaga Coberta - Centro" price="6.5" img="https://picsum.photos/seed/rs1/600/400" onReserve={onReserve} onOpen={()=>openSpot('Vaga Coberta - Centro')} />
+                <SpotCard title="Vaga Descoberta - Bairro Alto" price="4" img="https://picsum.photos/seed/rs2/600/400" onReserve={onReserve} onOpen={()=>openSpot('Vaga Descoberta - Bairro Alto')} />
+                <SpotCard title="Vaga Privada - Estúdio" price="8" img="https://picsum.photos/seed/rs3/600/400" onReserve={onReserve} onOpen={()=>openSpot('Vaga Privada - Estúdio')} />
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
     </div>
   )
 }
