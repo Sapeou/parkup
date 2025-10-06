@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Header({ brand = 'Parkup', onLogin = () => {} }) {
   return (
@@ -10,7 +11,7 @@ export default function Header({ brand = 'Parkup', onLogin = () => {} }) {
         </div>
       </div>
       <nav className="nav-links" style={{display:'flex',gap:12,alignItems:'center'}}>
-        <a style={{cursor:'pointer'}}>Como Funciona</a>
+        <Link to="/" style={{textDecoration:'none'}}>Como Funciona</Link>
         <a style={{cursor:'pointer'}}>Seja Parceiro</a>
         <button className="button-primary" onClick={onLogin}>Entrar</button>
       </nav>
