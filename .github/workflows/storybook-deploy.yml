@@ -29,17 +29,9 @@ jobs:
       - name: Build Storybook
         run: npx storybook build --output-dir storybook-static
 
-      - name: Upload artifact for GitHub Pages
-        # use newer version to avoid deprecated dependency on actions/upload-artifact@v3
-        uses: actions/upload-pages-artifact@v2
+      # Deploy directly to gh-pages using actions-gh-pages to avoid deprecated upload-artifact
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: storybook-static
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-    steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./storybook-static
