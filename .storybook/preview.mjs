@@ -1,6 +1,7 @@
 import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import '../src/app.css';
+import { AppProvider } from '../src/state/AppContext'
 
 // a tiny ThemeProvider to satisfy components that expect a theme context
 function ThemeProvider({ children }){
@@ -35,7 +36,9 @@ export const decorators = [
   (Story) => (
     React.createElement(MemoryRouter, null,
       React.createElement(ThemeProvider, null,
-        React.createElement(Story)
+        React.createElement(AppProvider, null,
+          React.createElement(Story)
+        )
       )
     )
   )
