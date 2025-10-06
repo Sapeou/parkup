@@ -8,7 +8,12 @@ import SpotDetails from './pages/SpotDetails'
 import MapView from './pages/MapView'
 import Profile from './pages/Profile'
 import Login from './pages/Login'
+import Reservations from './pages/Reservations'
+import CreateSpot from './pages/CreateSpot'
+import Register from './pages/Register'
+import NotFound from './pages/NotFound'
 import { Routes, Route, useNavigate } from 'react-router-dom'
+import AppContext from './state/AppContext'
 
 export default function App(){
   const [selected, setSelected] = React.useState(null)
@@ -21,9 +26,11 @@ export default function App(){
 
   const closeModal = ()=> setSelected(null)
 
+  const {reserveSpot, spots} = React.useContext(AppContext)
+
   const openSpot = (title)=>{
-    // for demo, create a small spot object
-    const spot = { title, price: '6.5', img: 'https://picsum.photos/seed/rs1/600/400' }
+    // for demo, select a real spot from context if exists
+    const spot = spots.find(s=>s.title === title) || { title, price: '6.5', img: 'https://picsum.photos/seed/rs1/600/400' }
     setActiveSpot(spot)
     navigate('/spot')
   }
@@ -38,6 +45,10 @@ export default function App(){
           <Route path="/spot" element={<SpotDetails spot={activeSpot} onReserve={handleReserve} />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login onLogin={()=>navigate('/profile')} />} />
+          <Route path="/reservations" element={<Reservations />} />
+          <Route path="/create" element={<CreateSpot />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
