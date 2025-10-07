@@ -8,7 +8,9 @@ export default function Header({ brand = 'Parkup', onLogin = () => {} }) {
   return (
     <header className="header container" style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
       <div className="logo" style={{display:'flex',alignItems:'center',gap:12}}>
-        <div className="brand-mark" style={{width:40,height:40,background:'#111',color:'#fff',display:'flex',alignItems:'center',justifyContent:'center',borderRadius:8}}>{brand[0]}</div>
+        <div className="brand-mark" style={{width:40,height:40,display:'flex',alignItems:'center',justifyContent:'center'}}>
+          <svg className="text-secondary" height="28" viewBox="0 0 48 48" width="28" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+        </div>
         <div>
           <div className="brand-title" style={{fontWeight:700}}>{brand}</div>
         </div>
