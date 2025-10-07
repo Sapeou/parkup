@@ -4,6 +4,7 @@ import './app.css'
 import ReservationModal from './components/ReservationModal'
 import Header from './components/Header'
 import Home from './pages/Home'
+import Landing from './pages/Landing'
 import SpotDetails from './pages/SpotDetails'
 import MapView from './pages/MapView'
 import Profile from './pages/Profile'
@@ -40,8 +41,10 @@ export default function App(){
       <Header onLogin={()=>navigate('/login')} />
       <main className="container">
         <Routes>
-          <Route path="/" element={<Home onReserve={handleReserve} openMap={()=>navigate('/map')} openSpot={openSpot} />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/home" element={<Home onReserve={handleReserve} openMap={()=>navigate('/map')} openSpot={openSpot} />} />
           <Route path="/map" element={<MapView onBack={()=>navigate('/')} />} />
+          <Route path="/landing" element={<Landing />} />
           <Route path="/spot" element={<SpotDetails spot={activeSpot} onReserve={handleReserve} />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login onLogin={()=>navigate('/profile')} />} />
